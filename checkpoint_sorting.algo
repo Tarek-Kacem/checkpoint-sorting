@@ -1,0 +1,29 @@
+PROCEDURE shift(VAR tab:ARRAY_OF INTEGER[20], b, e:INTEGER)
+    VAR
+        l: INTEGER ;
+    BEGIN
+        FOR l FROM e TO b STEP -1  DO  
+            tab[l+1] := tab[l];
+        END_FOR
+    END
+
+ALGORITHM checkpoint_sorting
+VAR
+    i,elt,j: INTEGER;
+    p,e: INTEGER:=0;
+
+BEGIN
+FOR i FROM 0 TO tab.length-1 DO
+    write("How many pair of vector do we have ?");
+    read(elt);
+    p:=0;
+    for j FROM 0 TO i DO
+        IF (elt > tab[j]) THEN 
+            p := p+1;
+        ElSE 
+            shift(tab, p,i);
+            tab[p]:=elt;
+            BREAK;
+        END_IF
+    END_FOR
+END
